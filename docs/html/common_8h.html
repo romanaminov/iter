@@ -1,0 +1,166 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.13"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Plasma Lab: Файл src/common.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Plasma Lab
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.8.13 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Поиск');
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#typedef-members">Определения типов</a> &#124;
+<a href="#enum-members">Перечисления</a> &#124;
+<a href="#var-members">Переменные</a>  </div>
+  <div class="headertitle">
+<div class="title">Файл common.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &lt;string&gt;</code><br />
+<code>#include &lt;vector&gt;</code><br />
+<code>#include &lt;fstream&gt;</code><br />
+<code>#include &lt;iostream&gt;</code><br />
+<code>#include &lt;sstream&gt;</code><br />
+<code>#include &lt;cstdlib&gt;</code><br />
+<code>#include &lt;cmath&gt;</code><br />
+<code>#include &lt;map&gt;</code><br />
+<code>#include &lt;future&gt;</code><br />
+</div>
+<p><a href="common_8h_source.html">См. исходные тексты.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
+Определения типов</h2></td></tr>
+<tr class="memitem:a7c9995b98bbbe9bd3b695dbc3fa5034c"><td class="memItemLeft" align="right" valign="top"><a id="a7c9995b98bbbe9bd3b695dbc3fa5034c"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>PlasmaLab::vec_d</b> = vector&lt; double &gt;</td></tr>
+<tr class="separator:a7c9995b98bbbe9bd3b695dbc3fa5034c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8a1565cbef7cde5af21e7891695e465d"><td class="memItemLeft" align="right" valign="top"><a id="a8a1565cbef7cde5af21e7891695e465d"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>PlasmaLab::vvec_d</b> = vector&lt; vector&lt; double &gt; &gt;</td></tr>
+<tr class="separator:a8a1565cbef7cde5af21e7891695e465d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
+Перечисления</h2></td></tr>
+<tr class="memitem:a637721c00d9d573aac687e80285fa1af"><td class="memItemLeft" align="right" valign="top"><a id="a637721c00d9d573aac687e80285fa1af"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><b>WorkMode</b> { <b>no_optimization</b> = 0, 
+<b>alternating_variable_descent_method</b> = 1, 
+<b>particle_swarm_method</b> = 2, 
+<b>method_of_steepest_descent</b> = 3
+ }</td></tr>
+<tr class="separator:a637721c00d9d573aac687e80285fa1af"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Переменные</h2></td></tr>
+<tr class="memitem:a0fb8a7e6dad3ec9b4f8b10010b718f56"><td class="memItemLeft" align="right" valign="top"><a id="a0fb8a7e6dad3ec9b4f8b10010b718f56"></a>
+const string&#160;</td><td class="memItemRight" valign="bottom"><b>PlasmaLab::path_for_input_data</b> = &quot;input_data\\&quot;</td></tr>
+<tr class="separator:a0fb8a7e6dad3ec9b4f8b10010b718f56"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3f5847cc38dad534ae06a288197520b0"><td class="memItemLeft" align="right" valign="top"><a id="a3f5847cc38dad534ae06a288197520b0"></a>
+const string&#160;</td><td class="memItemRight" valign="bottom"><b>PlasmaLab::path_for_output_data</b> = &quot;output_data\\&quot;</td></tr>
+<tr class="separator:a3f5847cc38dad534ae06a288197520b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abdc5055ab9c3c4998ce85a2ffc8d4352"><td class="memItemLeft" align="right" valign="top"><a id="abdc5055ab9c3c4998ce85a2ffc8d4352"></a>
+const string&#160;</td><td class="memItemRight" valign="bottom"><b>PlasmaLab::file_name_for_currents_result</b> = &quot;data_currents.txt&quot;</td></tr>
+<tr class="separator:abdc5055ab9c3c4998ce85a2ffc8d4352"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8ae757f62ff2a50093acc6e5ef017894"><td class="memItemLeft" align="right" valign="top"><a id="a8ae757f62ff2a50093acc6e5ef017894"></a>
+const string&#160;</td><td class="memItemRight" valign="bottom"><b>PlasmaLab::file_name_for_derivative_currents_result</b> = &quot;data_derivative_current.txt&quot;</td></tr>
+<tr class="separator:a8ae757f62ff2a50093acc6e5ef017894"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a25cbea89dd941a8bc2211628e9f56780"><td class="memItemLeft" align="right" valign="top"><a id="a25cbea89dd941a8bc2211628e9f56780"></a>
+const string&#160;</td><td class="memItemRight" valign="bottom"><b>PlasmaLab::file_name_for_test_currents</b> = &quot;j.dat&quot;</td></tr>
+<tr class="separator:a25cbea89dd941a8bc2211628e9f56780"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6abce76f1b54f155d6458605536140f0"><td class="memItemLeft" align="right" valign="top"><a id="a6abce76f1b54f155d6458605536140f0"></a>
+const string&#160;</td><td class="memItemRight" valign="bottom"><b>PlasmaLab::file_name_for_inductance</b> = &quot;matr_ind_univ.dat&quot;</td></tr>
+<tr class="separator:a6abce76f1b54f155d6458605536140f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeb545ac75a4d38ae4dfc2542fbf7830d"><td class="memItemLeft" align="right" valign="top"><a id="aeb545ac75a4d38ae4dfc2542fbf7830d"></a>
+const string&#160;</td><td class="memItemRight" valign="bottom"><b>PlasmaLab::file_name_for_resistance</b> = &quot;matr_res_univ.dat&quot;</td></tr>
+<tr class="separator:aeb545ac75a4d38ae4dfc2542fbf7830d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a66b23fed4144109d4fc19f3f73d6cc25"><td class="memItemLeft" align="right" valign="top"><a id="a66b23fed4144109d4fc19f3f73d6cc25"></a>
+const string&#160;</td><td class="memItemRight" valign="bottom"><b>PlasmaLab::file_name_for_required_current_plasma</b> = &quot;Ip.dat&quot;</td></tr>
+<tr class="separator:a66b23fed4144109d4fc19f3f73d6cc25"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7c816fe784b7e796906ccc8a2a7d7bcf"><td class="memItemLeft" align="right" valign="top"><a id="a7c816fe784b7e796906ccc8a2a7d7bcf"></a>
+const string&#160;</td><td class="memItemRight" valign="bottom"><b>PlasmaLab::file_name_for_alfa_z</b> = &quot;bz_cache.dat&quot;</td></tr>
+<tr class="separator:a7c816fe784b7e796906ccc8a2a7d7bcf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4daa6fd0ea0a04ea48a074992b2e6288"><td class="memItemLeft" align="right" valign="top"><a id="a4daa6fd0ea0a04ea48a074992b2e6288"></a>
+const string&#160;</td><td class="memItemRight" valign="bottom"><b>PlasmaLab::file_name_for_initial_currents</b> = &quot;I0.txt&quot;</td></tr>
+<tr class="separator:a4daa6fd0ea0a04ea48a074992b2e6288"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5a09aa4e6eb0c36c6550a46d42b9206b"><td class="memItemLeft" align="right" valign="top"><a id="a5a09aa4e6eb0c36c6550a46d42b9206b"></a>
+const string&#160;</td><td class="memItemRight" valign="bottom"><b>PlasmaLab::file_name_for_alfa_psi_alfa_r_alfa_z</b> = &quot;matr_field_univ.dat&quot;</td></tr>
+<tr class="separator:a5a09aa4e6eb0c36c6550a46d42b9206b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad643996b9ac0d01811bb0d878be781e2"><td class="memItemLeft" align="right" valign="top">const vector&lt; string &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>PlasmaLab::file_name_for_coils</b></td></tr>
+<tr class="separator:ad643996b9ac0d01811bb0d878be781e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Подробное описание</h2>
+<div class="textblock"><p>В данном файле собраны все константы, используемые в работе программы. Из названий переменных можно понять для чего они. </p>
+</div><h2 class="groupheader">Переменные</h2>
+<a id="file_ad643996b9ac0d01811bb0d878be781e2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#file_ad643996b9ac0d01811bb0d878be781e2">&#9670;&nbsp;</a></span>file_name_for_coils</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const vector&lt;string&gt; PlasmaLab::file_name_for_coils</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Инициализатор</b><div class="fragment"><div class="line">= { <span class="stringliteral">&quot;cs3u.txt&quot;</span>,</div><div class="line">                                                                    <span class="stringliteral">&quot;cs2u.txt&quot;</span>,</div><div class="line">                                                                    <span class="stringliteral">&quot;cs1.txt&quot;</span>,</div><div class="line">                                                                    <span class="stringliteral">&quot;cs2l.txt&quot;</span>,</div><div class="line">                                                                    <span class="stringliteral">&quot;cs3l.txt&quot;</span>,</div><div class="line">                                                                    <span class="stringliteral">&quot;pf1.txt&quot;</span>,</div><div class="line">                                                                    <span class="stringliteral">&quot;pf2.txt&quot;</span>,</div><div class="line">                                                                    <span class="stringliteral">&quot;pf3.txt&quot;</span>,</div><div class="line">                                                                    <span class="stringliteral">&quot;pf4.txt&quot;</span>,</div><div class="line">                                                                    <span class="stringliteral">&quot;pf5.txt&quot;</span>,</div><div class="line">                                                                    <span class="stringliteral">&quot;pf6.txt&quot;</span>}</div></div><!-- fragment -->
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Создано системой &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.13
+</small></address>
+</body>
+</html>

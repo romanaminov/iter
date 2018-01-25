@@ -1,0 +1,101 @@
+\hypertarget{class_plasma_lab_1_1_model}{}\section{Класс Plasma\+Lab\+:\+:Model}
+\label{class_plasma_lab_1_1_model}\index{Plasma\+Lab\+::\+Model@{Plasma\+Lab\+::\+Model}}
+\subsection*{Открытые члены}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{class_plasma_lab_1_1_model_ab25a8b432256087bdd476b8aafed963c}{main\+\_\+function} (\hyperlink{class_plasma_lab_1_1_read_data}{Read\+Data} \&)
+\begin{DoxyCompactList}\small\item\em Главная функция. \end{DoxyCompactList}\item 
+const vvec\+\_\+d \& \hyperlink{class_plasma_lab_1_1_model_a4b116ad25a3cf812d21889f1894e3a79}{get\+\_\+currents} () const
+\begin{DoxyCompactList}\small\item\em Возвращет посчитанные в каждый момент времени (дискретно) токи в контурах системы. \end{DoxyCompactList}\item 
+const vvec\+\_\+d \& \hyperlink{class_plasma_lab_1_1_model_a83e3fa03423a4a56eb9754a6c097d851}{get\+\_\+derivative\+\_\+of\+\_\+currents} () const
+\begin{DoxyCompactList}\small\item\em Возвращет посчитанные в каждый момент времени (дискретно) производные токов в контурах системы. \end{DoxyCompactList}\item 
+int \hyperlink{class_plasma_lab_1_1_model_abc0c99cb3acd4a85ab1b4f7165c51a83}{get\+\_\+system\+\_\+size} () const
+\begin{DoxyCompactList}\small\item\em Возвращает размерность системы лин. дифф. уравнений. \end{DoxyCompactList}\item 
+int \hyperlink{class_plasma_lab_1_1_model_a4c338e79fdbe777204eec309cfef4717}{get\+\_\+short\+\_\+step} () const
+\item 
+double \hyperlink{class_plasma_lab_1_1_model_a757a74457265385a0bf8860a31c23c29}{get\+\_\+integration\+\_\+step} () const
+\end{DoxyCompactItemize}
+
+
+\subsection{Методы}
+\mbox{\Hypertarget{class_plasma_lab_1_1_model_a4b116ad25a3cf812d21889f1894e3a79}\label{class_plasma_lab_1_1_model_a4b116ad25a3cf812d21889f1894e3a79}} 
+\index{Plasma\+Lab\+::\+Model@{Plasma\+Lab\+::\+Model}!get\+\_\+currents@{get\+\_\+currents}}
+\index{get\+\_\+currents@{get\+\_\+currents}!Plasma\+Lab\+::\+Model@{Plasma\+Lab\+::\+Model}}
+\subsubsection{\texorpdfstring{get\+\_\+currents()}{get\_currents()}}
+{\footnotesize\ttfamily const vvec\+\_\+d\& Plasma\+Lab\+::\+Model\+::get\+\_\+currents (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Возвращет посчитанные в каждый момент времени (дискретно) токи в контурах системы. 
+
+\begin{DoxyReturn}{Возвращает}
+const vvec\+\_\+d \& 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_plasma_lab_1_1_model_a83e3fa03423a4a56eb9754a6c097d851}\label{class_plasma_lab_1_1_model_a83e3fa03423a4a56eb9754a6c097d851}} 
+\index{Plasma\+Lab\+::\+Model@{Plasma\+Lab\+::\+Model}!get\+\_\+derivative\+\_\+of\+\_\+currents@{get\+\_\+derivative\+\_\+of\+\_\+currents}}
+\index{get\+\_\+derivative\+\_\+of\+\_\+currents@{get\+\_\+derivative\+\_\+of\+\_\+currents}!Plasma\+Lab\+::\+Model@{Plasma\+Lab\+::\+Model}}
+\subsubsection{\texorpdfstring{get\+\_\+derivative\+\_\+of\+\_\+currents()}{get\_derivative\_of\_currents()}}
+{\footnotesize\ttfamily const vvec\+\_\+d\& Plasma\+Lab\+::\+Model\+::get\+\_\+derivative\+\_\+of\+\_\+currents (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Возвращет посчитанные в каждый момент времени (дискретно) производные токов в контурах системы. 
+
+\begin{DoxyReturn}{Возвращает}
+const vvec\+\_\+d \& 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_plasma_lab_1_1_model_a757a74457265385a0bf8860a31c23c29}\label{class_plasma_lab_1_1_model_a757a74457265385a0bf8860a31c23c29}} 
+\index{Plasma\+Lab\+::\+Model@{Plasma\+Lab\+::\+Model}!get\+\_\+integration\+\_\+step@{get\+\_\+integration\+\_\+step}}
+\index{get\+\_\+integration\+\_\+step@{get\+\_\+integration\+\_\+step}!Plasma\+Lab\+::\+Model@{Plasma\+Lab\+::\+Model}}
+\subsubsection{\texorpdfstring{get\+\_\+integration\+\_\+step()}{get\_integration\_step()}}
+{\footnotesize\ttfamily double Plasma\+Lab\+::\+Model\+::get\+\_\+integration\+\_\+step (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+Возвращет шаг интегрированя системы линейных дифф. уравнений в методе Рунге-\/Кутта 4 порядка точности \begin{DoxyReturn}{Возвращает}
+double integration\+\_\+step 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_plasma_lab_1_1_model_a4c338e79fdbe777204eec309cfef4717}\label{class_plasma_lab_1_1_model_a4c338e79fdbe777204eec309cfef4717}} 
+\index{Plasma\+Lab\+::\+Model@{Plasma\+Lab\+::\+Model}!get\+\_\+short\+\_\+step@{get\+\_\+short\+\_\+step}}
+\index{get\+\_\+short\+\_\+step@{get\+\_\+short\+\_\+step}!Plasma\+Lab\+::\+Model@{Plasma\+Lab\+::\+Model}}
+\subsubsection{\texorpdfstring{get\+\_\+short\+\_\+step()}{get\_short\_step()}}
+{\footnotesize\ttfamily int Plasma\+Lab\+::\+Model\+::get\+\_\+short\+\_\+step (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+чтобы не грузить систему, полученные данные записываем в файл с шагом short\+\_\+step умноженное на integration\+\_\+step \begin{DoxyReturn}{Возвращает}
+int short\+\_\+step 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_plasma_lab_1_1_model_abc0c99cb3acd4a85ab1b4f7165c51a83}\label{class_plasma_lab_1_1_model_abc0c99cb3acd4a85ab1b4f7165c51a83}} 
+\index{Plasma\+Lab\+::\+Model@{Plasma\+Lab\+::\+Model}!get\+\_\+system\+\_\+size@{get\+\_\+system\+\_\+size}}
+\index{get\+\_\+system\+\_\+size@{get\+\_\+system\+\_\+size}!Plasma\+Lab\+::\+Model@{Plasma\+Lab\+::\+Model}}
+\subsubsection{\texorpdfstring{get\+\_\+system\+\_\+size()}{get\_system\_size()}}
+{\footnotesize\ttfamily int Plasma\+Lab\+::\+Model\+::get\+\_\+system\+\_\+size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Возвращает размерность системы лин. дифф. уравнений. 
+
+\begin{DoxyReturn}{Возвращает}
+int 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_plasma_lab_1_1_model_ab25a8b432256087bdd476b8aafed963c}\label{class_plasma_lab_1_1_model_ab25a8b432256087bdd476b8aafed963c}} 
+\index{Plasma\+Lab\+::\+Model@{Plasma\+Lab\+::\+Model}!main\+\_\+function@{main\+\_\+function}}
+\index{main\+\_\+function@{main\+\_\+function}!Plasma\+Lab\+::\+Model@{Plasma\+Lab\+::\+Model}}
+\subsubsection{\texorpdfstring{main\+\_\+function()}{main\_function()}}
+{\footnotesize\ttfamily int Plasma\+Lab\+::\+Model\+::main\+\_\+function (\begin{DoxyParamCaption}\item[{\hyperlink{class_plasma_lab_1_1_read_data}{Read\+Data} \&}]{read\+\_\+data }\end{DoxyParamCaption})}
+
+
+
+Главная функция. 
+
+
+\begin{DoxyParams}[1]{Аргументы}
+\mbox{\tt in,out}  & {\em \hyperlink{class_plasma_lab_1_1_read_data}{Read\+Data}} & \&model \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+0, если все хорошо. 
+\end{DoxyReturn}
+
+
+Объявления и описания членов классов находятся в файлах\+:\begin{DoxyCompactItemize}
+\item 
+src/model/\hyperlink{model_8h}{model.\+h}\item 
+src/model/model.\+cpp\end{DoxyCompactItemize}

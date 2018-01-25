@@ -1,0 +1,268 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.13"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Plasma Lab: Класс PlasmaLab::Model</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Plasma Lab
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.8.13 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Поиск');
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><b>PlasmaLab</b></li><li class="navelem"><a class="el" href="class_plasma_lab_1_1_model.html">Model</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Открытые члены</a> &#124;
+<a href="class_plasma_lab_1_1_model-members.html">Полный список членов класса</a>  </div>
+  <div class="headertitle">
+<div class="title">Класс PlasmaLab::Model</div>  </div>
+</div><!--header-->
+<div class="contents">
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Открытые члены</h2></td></tr>
+<tr class="memitem:ab25a8b432256087bdd476b8aafed963c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_plasma_lab_1_1_model.html#ab25a8b432256087bdd476b8aafed963c">main_function</a> (<a class="el" href="class_plasma_lab_1_1_read_data.html">ReadData</a> &amp;)</td></tr>
+<tr class="memdesc:ab25a8b432256087bdd476b8aafed963c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Главная функция.  <a href="#ab25a8b432256087bdd476b8aafed963c">Подробнее...</a><br /></td></tr>
+<tr class="separator:ab25a8b432256087bdd476b8aafed963c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4b116ad25a3cf812d21889f1894e3a79"><td class="memItemLeft" align="right" valign="top">const vvec_d &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_plasma_lab_1_1_model.html#a4b116ad25a3cf812d21889f1894e3a79">get_currents</a> () const</td></tr>
+<tr class="memdesc:a4b116ad25a3cf812d21889f1894e3a79"><td class="mdescLeft">&#160;</td><td class="mdescRight">Возвращет посчитанные в каждый момент времени (дискретно) токи в контурах системы.  <a href="#a4b116ad25a3cf812d21889f1894e3a79">Подробнее...</a><br /></td></tr>
+<tr class="separator:a4b116ad25a3cf812d21889f1894e3a79"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a83e3fa03423a4a56eb9754a6c097d851"><td class="memItemLeft" align="right" valign="top">const vvec_d &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_plasma_lab_1_1_model.html#a83e3fa03423a4a56eb9754a6c097d851">get_derivative_of_currents</a> () const</td></tr>
+<tr class="memdesc:a83e3fa03423a4a56eb9754a6c097d851"><td class="mdescLeft">&#160;</td><td class="mdescRight">Возвращет посчитанные в каждый момент времени (дискретно) производные токов в контурах системы.  <a href="#a83e3fa03423a4a56eb9754a6c097d851">Подробнее...</a><br /></td></tr>
+<tr class="separator:a83e3fa03423a4a56eb9754a6c097d851"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abc0c99cb3acd4a85ab1b4f7165c51a83"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_plasma_lab_1_1_model.html#abc0c99cb3acd4a85ab1b4f7165c51a83">get_system_size</a> () const</td></tr>
+<tr class="memdesc:abc0c99cb3acd4a85ab1b4f7165c51a83"><td class="mdescLeft">&#160;</td><td class="mdescRight">Возвращает размерность системы лин. дифф. уравнений.  <a href="#abc0c99cb3acd4a85ab1b4f7165c51a83">Подробнее...</a><br /></td></tr>
+<tr class="separator:abc0c99cb3acd4a85ab1b4f7165c51a83"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4c338e79fdbe777204eec309cfef4717"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_plasma_lab_1_1_model.html#a4c338e79fdbe777204eec309cfef4717">get_short_step</a> () const</td></tr>
+<tr class="separator:a4c338e79fdbe777204eec309cfef4717"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a757a74457265385a0bf8860a31c23c29"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_plasma_lab_1_1_model.html#a757a74457265385a0bf8860a31c23c29">get_integration_step</a> () const</td></tr>
+<tr class="separator:a757a74457265385a0bf8860a31c23c29"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Методы</h2>
+<a id="a4b116ad25a3cf812d21889f1894e3a79"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4b116ad25a3cf812d21889f1894e3a79">&#9670;&nbsp;</a></span>get_currents()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const vvec_d&amp; PlasmaLab::Model::get_currents </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Возвращет посчитанные в каждый момент времени (дискретно) токи в контурах системы. </p>
+<dl class="section return"><dt>Возвращает</dt><dd>const vvec_d &amp; </dd></dl>
+
+</div>
+</div>
+<a id="a83e3fa03423a4a56eb9754a6c097d851"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a83e3fa03423a4a56eb9754a6c097d851">&#9670;&nbsp;</a></span>get_derivative_of_currents()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const vvec_d&amp; PlasmaLab::Model::get_derivative_of_currents </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Возвращет посчитанные в каждый момент времени (дискретно) производные токов в контурах системы. </p>
+<dl class="section return"><dt>Возвращает</dt><dd>const vvec_d &amp; </dd></dl>
+
+</div>
+</div>
+<a id="a757a74457265385a0bf8860a31c23c29"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a757a74457265385a0bf8860a31c23c29">&#9670;&nbsp;</a></span>get_integration_step()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double PlasmaLab::Model::get_integration_step </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Возвращет шаг интегрированя системы линейных дифф. уравнений в методе Рунге-Кутта 4 порядка точности </p><dl class="section return"><dt>Возвращает</dt><dd>double integration_step </dd></dl>
+
+</div>
+</div>
+<a id="a4c338e79fdbe777204eec309cfef4717"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4c338e79fdbe777204eec309cfef4717">&#9670;&nbsp;</a></span>get_short_step()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int PlasmaLab::Model::get_short_step </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>чтобы не грузить систему, полученные данные записываем в файл с шагом short_step умноженное на integration_step </p><dl class="section return"><dt>Возвращает</dt><dd>int short_step </dd></dl>
+
+</div>
+</div>
+<a id="abc0c99cb3acd4a85ab1b4f7165c51a83"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abc0c99cb3acd4a85ab1b4f7165c51a83">&#9670;&nbsp;</a></span>get_system_size()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int PlasmaLab::Model::get_system_size </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Возвращает размерность системы лин. дифф. уравнений. </p>
+<dl class="section return"><dt>Возвращает</dt><dd>int </dd></dl>
+
+</div>
+</div>
+<a id="ab25a8b432256087bdd476b8aafed963c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab25a8b432256087bdd476b8aafed963c">&#9670;&nbsp;</a></span>main_function()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int PlasmaLab::Model::main_function </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_plasma_lab_1_1_read_data.html">ReadData</a> &amp;&#160;</td>
+          <td class="paramname"><em>read_data</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Главная функция. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in,out]</td><td class="paramname"><a class="el" href="class_plasma_lab_1_1_read_data.html" title="The ReadData class. ">ReadData</a></td><td>&amp;model </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>0, если все хорошо. </dd></dl>
+
+</div>
+</div>
+<hr/>Объявления и описания членов классов находятся в файлах:<ul>
+<li>src/model/<a class="el" href="model_8h_source.html">model.h</a></li>
+<li>src/model/model.cpp</li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Создано системой &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.13
+</small></address>
+</body>
+</html>
