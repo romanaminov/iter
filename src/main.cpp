@@ -39,7 +39,8 @@ int main(int argc, char *argv[])
 
     string path = "/home/roman/QtProjects/PlasmaLab/PlasmaLab_001/const_init_data/";
     if(!read_data.load_data(path)){
-        model.main_function(read_data);
+        Functionals functionals(read_data);
+        model.main_function(read_data, functionals/* +приращения к управл.параметрам */ /* класс с функционалами */);
         write_data.main_write(path,model);
     }
     end = std::chrono::system_clock::now();

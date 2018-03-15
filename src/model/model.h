@@ -11,6 +11,8 @@
 #include "src/read_data/read_data.h"
 
 namespace PlasmaLab {
+    void matrix_multiplier(const vec_d &, const vec_d &,vec_d &, int, int);
+    void matrix_multiplier(double &, const vec_d &,const vec_d &);
 
     enum class IsBreakdown
     {
@@ -20,6 +22,50 @@ namespace PlasmaLab {
 
     struct IncrementOfParameters{
         double data;
+    };
+    /*В классе происходит проверка условий пробоя и вычисление значений интегральных функционалов до Пробоя включительно*/
+    class FunctionalsBeforeBreakdown{
+      IsBreakdown bd_key;
+      bool init_key;
+      double u_loop;
+      vector<double> r_fields;
+      vector<double> z_fields;
+      vec_d max_currents;
+      int number_coils;
+
+      const double r_field_max,
+             z_field_max,
+             nessesary_u_loop;
+    public:
+      FunctionalsBeforeBreakdown() = delete;
+      /*единственно возможный конструктор*/
+      FunctionalsBeforeBreakdown(const ReadData &rd) : number_coils(rd.get_coils_count()), bd_key(IsBreakdown::no), init_key(false), u_loop(0),
+                                nessesary_u_loop(rd.get_required_loop_voltage()),
+                                r_field_max(rd.get_r_field_max()), z_field_max(rd.get_z_field_max()) {
+          for(int i=0;i < rd.get_control_points();++i){
+              r_fields.push_back(0);
+              z_fields.push_back(0);
+          }
+          rd.get_currents_max(max_currents);
+      }
+      /*проверка условий пробоя, выполнены ли они.*/
+      IsBreakdown check_breakdown(int point,const vvec_d &currents, const vvec_d &derivative_of_current, const vvec_d &alfa_psi,
+                                  const vvec_d &alfa_r,const vvec_d &alfa_z);
+
+      /*получить текущее значение напряжения на обходе*/
+      double get_u_loop() const;
+      /*получить текущее значение радиальной компоненты магнитного поля в контрольных точках*/
+      double get_r_fields() const;
+      /*получить текущее значение вертикальной компоненты магнитного поля в контрольных точках*/
+      double get_z_fields() const;
+    };
+    class Functionals{
+        FunctionalsBeforeBreakdown functionalsBeforeBreakdown;
+    public:
+        Functionals() = delete;
+        Functionals(const ReadData &rd) : functionalsBeforeBreakdown(rd){}
+
+        FunctionalsBeforeBreakdown &get_functionalsBeforeBreakdown(){ return functionalsBeforeBreakdown; }
     };
 
     class Model
@@ -68,28 +114,27 @@ namespace PlasmaLab {
         vec_d inverse_L_on_Mp_matrix;           //матрица от умножения обратной матрицы индуктивности на взаимные сопротивления плазмы с др.элементами камеры
 
         inline void data_preparation(const ReadData &);
-        inline void matrix_multiplier(vec_d &, vec_d &,vec_d &, int, int);
-        inline void matrix_multiplier(double &, vec_d &,vec_d &);
+        /*уравнения Киргкофа. система ДО и ПОСЛЕ пробоя.*/
         inline void model_combined_equations(double, vec_d &,vec_d &);
+        /*вычислить напряжение в катушке в текущий момент времени*/
         inline void voltage_calculator(double);
-
+        /*вычислить значение текущего времени */
         inline int time_comparison(bool &, double, const vec_d &);
         inline int parser_alfa_xxx(const ReadData &);
+        /*вычислить обратную матрицу индукнитвностей*/
         inline int slau_gauss(vec_d &, vec_d);
-        inline int runge_kutta_4();
-
+        inline int runge_kutta_4(Functionals &);
+        /*вычисление напряжения в катушке в момент времени*/
         inline double dependence_U_on_T(double, double, double, double, double);
+        /*кусочно-линейная функция тока плазмы*/
         inline double law_of_plasma_current(double);
-
-        inline IsBreakdown breakdown_verification(int);
-
      public:
         /*!
          * \brief Главная функция.
          * \param[in,out] ReadData &model
          * \return 0, если все хорошо.
          */
-        int main_function(ReadData &);
+        int main_function(const ReadData &, Functionals &);
 
         /*!
          * \brief Возвращет посчитанные в каждый момент времени (дискретно) токи в контурах системы.

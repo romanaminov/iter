@@ -1,6 +1,60 @@
 #include "src/model/model.h"
 
 namespace  PlasmaLab {
+    void matrix_multiplier(const vec_d &m1, const vec_d &m2,vec_d &m3_res, int m1_width, int m2_high){
+    // для примера, пусть матрица m1 имеет размерность 3на3, а m2 размерность 2на3.тогда m1_width=3, а  m2_high=2
+        for(int n = 0;n < m1_width; ++n){
+            for(int i = 0;i < m2_high;++i){
+                for(int j = 0;j < m1_width;++j){
+                    m3_res[n * m2_high + i] += m1[n * m1_width + j] * m2[m2_high * j + i];
+                }
+            }
+        }
+    }
+    void matrix_multiplier(double &val, const vec_d &v1,const vec_d &v2){
+        val=0;
+        for(unsigned int j = 0;j < v1.size();++j){
+            val += v1[j] * v2[j];
+        }
+    }
+
+
+    IsBreakdown FunctionalsBeforeBreakdown::check_breakdown(int point,const vvec_d &currents, const vvec_d &derivative_of_current, const vvec_d &alfa_psi,
+                                                       const vvec_d &alfa_r,const vvec_d &alfa_z){
+        bd_key = IsBreakdown::yes;
+        double prev_u_loop = u_loop;
+        matrix_multiplier(u_loop,derivative_of_current[point], alfa_psi[0]);
+        if(init_key == false)
+            prev_u_loop = u_loop;
+
+        for(uint i = 0;i < r_fields.size(); ++i){
+            matrix_multiplier(r_fields[i],currents[point], alfa_r[i]);
+            matrix_multiplier(z_fields[i],currents[point], alfa_z[i]);
+        }
+
+        if(prev_u_loop > u_loop) //значит производная напряжения на обходе < 0, что не допустимо
+            bd_key = IsBreakdown::no;
+        for(uint i = 0; i < number_coils; ++i){//токи в катушках должны быть не больше максимальных значений
+            if( (currents[point][i] < max_currents[i])&&(currents[point][i] > -max_currents[i]) )
+                bd_key = IsBreakdown::yes;
+            else
+                bd_key = IsBreakdown::no;
+
+        }
+
+
+
+        for(uint i = 0; i < r_fields.size(); ++i){
+            if(fabs(r_fields[i])>r_field_max)
+                bd_key =  IsBreakdown::no;
+            if(fabs(z_fields[i])>z_field_max)
+                bd_key =  IsBreakdown::no;
+            if( ( fabs(u_loop )>(nessesary_u_loop+0.5) ) || ( fabs(u_loop)<(nessesary_u_loop - 0.3) ) )
+                bd_key =  IsBreakdown::no;
+        }
+
+        return bd_key;
+    }
 
     Model::Model(void)
     {
@@ -82,7 +136,7 @@ namespace  PlasmaLab {
         return 0;
     }
 
-    int Model::runge_kutta_4(){
+    int Model::runge_kutta_4(Functionals &functionals){
         double time_step = 0;
         vec_d k1(system_size,0),
               k2(system_size,0),
@@ -113,34 +167,15 @@ namespace  PlasmaLab {
                 currents[j][i] = currents[j-1][i] + (k1[i] + 2.0 * k2[i] + 2.0 * k3[i] + k4[i]) / 6;
 
             if(breakdown_key != IsBreakdown::yes){
-                breakdown_key = breakdown_verification(j - 1);//проверка на выполнение условий для пробой
+                breakdown_key =  functionals.get_functionalsBeforeBreakdown().check_breakdown(j - 1,currents,derivative_of_current,
+                                                                                         alfa_psi,alfa_r,alfa_z );//проверка на выполнение условий для пробой
                 breakdown_time = j - 1;
                 breakdown_time *= integration_step;//вычисляем время пробоя
             }
         }
         return 0;
     }
-    IsBreakdown Model::breakdown_verification(int point)
-    {
-        static vec_d br(control_points_count,0),
-                     bz(control_points_count,0);
-        double uloop = 0;
-        matrix_multiplier(uloop,derivative_of_current[point], alfa_psi[0]);
-        for(int i = 0;i < control_points_count;++i){
-            matrix_multiplier(br[i],currents[point], alfa_r[i]);
-            matrix_multiplier(bz[i],currents[point], alfa_z[i]);
-        }
 
-        for(int i = 0;i < control_points_count;++i){
-            if(fabs(br[i]) > r_field_max)
-                return IsBreakdown::no;
-            if(fabs(bz[i]) > z_field_max)
-                return IsBreakdown::no;
-            if( ( fabs(uloop ) > (required_loop_voltage + 0.5) ) || ( fabs(uloop) < (required_loop_voltage - 0.3) ) )
-                return IsBreakdown::no;
-        }
-        return IsBreakdown::yes;
-    }
     int Model::parser_alfa_xxx(const ReadData &read_data){
         for(int i = 0;i < control_points_count;++i){
             alfa_r.push_back(vec_d(system_size,0));
@@ -220,31 +255,15 @@ namespace  PlasmaLab {
         matrix_multiplier(inverse_inductance_matrix, plasma_inductance_matrix, inverse_L_on_Mp_matrix,system_size,control_points_count);
     }
 
-    int Model::main_function(ReadData& read_data){
+    int Model::main_function(const ReadData& read_data, Functionals &functionals){
 
 
         data_preparation(read_data);
 
-        runge_kutta_4();
+        runge_kutta_4(functionals);
 
         return 0;
-    }
-    void Model::matrix_multiplier(vec_d &m1, vec_d &m2,vec_d &m3_res, int m1_width, int m2_high){
-    // для примера, пусть матрица m1 имеет размерность 3на3, а m2 размерность 2на3.тогда m1_width=3, а  m2_high=2
-        for(int n = 0;n < m1_width; ++n){
-            for(int i = 0;i < m2_high;++i){
-                for(int j = 0;j < m1_width;++j){
-                    m3_res[n * m2_high + i] += m1[n * m1_width + j] * m2[m2_high * j + i];
-                }
-            }
-        }
-    }
-    void Model::matrix_multiplier(double &val, vec_d &v1,vec_d &v2){
-        val=0;
-        for(unsigned int j = 0;j < v1.size();++j){
-            val += v1[j] * v2[j];
-        }
-    }
+    }    
     void Model::voltage_calculator(double time_step)
     {
         for(int i = 0; i < coils_count; ++i)
@@ -260,6 +279,7 @@ namespace  PlasmaLab {
                 voltages_in_some_momente[i - 1] = voltage_in_coils[i - 1][number + 1];
         }
     }
+
     double Model::dependence_U_on_T(double t1, double t2, double u1, double u2, double t){
         double u, a, b;
         a = (u2 - u1) / (t2 - t1);
@@ -306,7 +326,7 @@ namespace  PlasmaLab {
             }
             KN[i] = integration_step * tmp1;
         }
-    }
+    }    
     double Model::law_of_plasma_current(double current_time)
     {
         double k = 0,
