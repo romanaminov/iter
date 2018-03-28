@@ -9,64 +9,14 @@
 #define MODEL_H
 
 #include "src/read_data/read_data.h"
+#include "src/model/functionals.h"
 
 namespace PlasmaLab {
-    void matrix_multiplier(const vec_d &, const vec_d &,vec_d &, int, int);
-    void matrix_multiplier(double &, const vec_d &,const vec_d &);
-
-    enum class IsBreakdown
-    {
-        no  = 0,
-        yes = 100
-    };
 
     struct IncrementOfParameters{
         double data;
     };
-    /*В классе происходит проверка условий пробоя и вычисление значений интегральных функционалов до Пробоя включительно*/
-    class FunctionalsBeforeBreakdown{
-      IsBreakdown bd_key;
-      bool init_key;
-      double u_loop;
-      vector<double> r_fields;
-      vector<double> z_fields;
-      vec_d max_currents;
-      int number_coils;
 
-      const double r_field_max,
-             z_field_max,
-             nessesary_u_loop;
-    public:
-      FunctionalsBeforeBreakdown() = delete;
-      /*единственно возможный конструктор*/
-      FunctionalsBeforeBreakdown(const ReadData &rd) : number_coils(rd.get_coils_count()), bd_key(IsBreakdown::no), init_key(false), u_loop(0),
-                                nessesary_u_loop(rd.get_required_loop_voltage()),
-                                r_field_max(rd.get_r_field_max()), z_field_max(rd.get_z_field_max()) {
-          for(int i=0;i < rd.get_control_points();++i){
-              r_fields.push_back(0);
-              z_fields.push_back(0);
-          }
-          rd.get_currents_max(max_currents);
-      }
-      /*проверка условий пробоя, выполнены ли они.*/
-      IsBreakdown check_breakdown(int point,const vvec_d &currents, const vvec_d &derivative_of_current, const vvec_d &alfa_psi,
-                                  const vvec_d &alfa_r,const vvec_d &alfa_z);
-
-      /*получить текущее значение напряжения на обходе*/
-      double get_u_loop() const;
-      /*получить текущее значение радиальной компоненты магнитного поля в контрольных точках*/
-      double get_r_fields() const;
-      /*получить текущее значение вертикальной компоненты магнитного поля в контрольных точках*/
-      double get_z_fields() const;
-    };
-    class Functionals{
-        FunctionalsBeforeBreakdown functionalsBeforeBreakdown;
-    public:
-        Functionals() = delete;
-        Functionals(const ReadData &rd) : functionalsBeforeBreakdown(rd){}
-
-        FunctionalsBeforeBreakdown &get_functionalsBeforeBreakdown(){ return functionalsBeforeBreakdown; }
-    };
 
     class Model
     {

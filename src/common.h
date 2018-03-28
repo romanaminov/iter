@@ -42,8 +42,26 @@ namespace PlasmaLab {
         method_of_steepest_descent = 3
     };
 
+    enum class IsBreakdown
+    {
+        no  = 0, ///< пробоя не было
+        yes = 100 ///< пробой состоялся
+    };
+    enum class IsRequirements
+    {
+      yes = 110, ///< ограничения и требования налагаемые на модель выполены
+      no = 0 ///< физические и технологические ограничения и требования были нарушены
+    };
+
+#ifdef Q_OS_WIN32
+    const string path_for_input_data                            = "input_data\\";
+    const string path_for_output_data                           = "output_data\\";
+#endif
+
+#ifdef Q_OS_LINUX
     const string path_for_input_data                            = "input_data/";
     const string path_for_output_data                           = "output_data/";
+#endif
     const string file_name_for_currents_result                  = "data_currents.txt";
     const string file_name_for_derivative_currents_result       = "data_derivative_current.txt";
     const string file_name_for_test_currents                    = "j.dat";
@@ -64,6 +82,9 @@ namespace PlasmaLab {
                                                                     "pf4.txt",
                                                                     "pf5.txt",
                                                                     "pf6.txt"};
+
+    void matrix_multiplier(const vec_d &, const vec_d &,vec_d &, int, int);
+    void matrix_multiplier(double &, const vec_d &,const vec_d &);
 
 }
 

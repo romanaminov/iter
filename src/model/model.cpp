@@ -18,44 +18,6 @@ namespace  PlasmaLab {
         }
     }
 
-
-    IsBreakdown FunctionalsBeforeBreakdown::check_breakdown(int point,const vvec_d &currents, const vvec_d &derivative_of_current, const vvec_d &alfa_psi,
-                                                       const vvec_d &alfa_r,const vvec_d &alfa_z){
-        bd_key = IsBreakdown::yes;
-        double prev_u_loop = u_loop;
-        matrix_multiplier(u_loop,derivative_of_current[point], alfa_psi[0]);
-        if(init_key == false)
-            prev_u_loop = u_loop;
-
-        for(uint i = 0;i < r_fields.size(); ++i){
-            matrix_multiplier(r_fields[i],currents[point], alfa_r[i]);
-            matrix_multiplier(z_fields[i],currents[point], alfa_z[i]);
-        }
-
-        if(prev_u_loop > u_loop) //значит производная напряжения на обходе < 0, что не допустимо
-            bd_key = IsBreakdown::no;
-        for(uint i = 0; i < number_coils; ++i){//токи в катушках должны быть не больше максимальных значений
-            if( (currents[point][i] < max_currents[i])&&(currents[point][i] > -max_currents[i]) )
-                bd_key = IsBreakdown::yes;
-            else
-                bd_key = IsBreakdown::no;
-
-        }
-
-
-
-        for(uint i = 0; i < r_fields.size(); ++i){
-            if(fabs(r_fields[i])>r_field_max)
-                bd_key =  IsBreakdown::no;
-            if(fabs(z_fields[i])>z_field_max)
-                bd_key =  IsBreakdown::no;
-            if( ( fabs(u_loop )>(nessesary_u_loop+0.5) ) || ( fabs(u_loop)<(nessesary_u_loop - 0.3) ) )
-                bd_key =  IsBreakdown::no;
-        }
-
-        return bd_key;
-    }
-
     Model::Model(void)
     {
         breakdown_key               = IsBreakdown::no;
@@ -167,7 +129,7 @@ namespace  PlasmaLab {
                 currents[j][i] = currents[j-1][i] + (k1[i] + 2.0 * k2[i] + 2.0 * k3[i] + k4[i]) / 6;
 
             if(breakdown_key != IsBreakdown::yes){
-                breakdown_key =  functionals.get_functionalsBeforeBreakdown().check_breakdown(j - 1,currents,derivative_of_current,
+                breakdown_key =  functionals.get_functionalsBeforeBreakdown().run(j - 1,currents,derivative_of_current,
                                                                                          alfa_psi,alfa_r,alfa_z );//проверка на выполнение условий для пробой
                 breakdown_time = j - 1;
                 breakdown_time *= integration_step;//вычисляем время пробоя
