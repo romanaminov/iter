@@ -1,0 +1,4 @@
+#ifndef FUNCTIONALS_H
+#define FUNCTIONALS_H
+
+#endif // FUNCTIONALS_H
