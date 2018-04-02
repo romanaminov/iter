@@ -31,8 +31,9 @@ int main(int argc, char *argv[])
     path = "/home/roman/QtProjects/PlasmaLab/PlasmaLab_001/const_init_data/";
 #endif
 
-    if(argc == 1)
+    if(argc == 2)
         path = argv[0];
+
     std::chrono::time_point<std::chrono::system_clock> start, end;
     start = std::chrono::system_clock::now();
 
@@ -42,8 +43,8 @@ int main(int argc, char *argv[])
 
 
     if(!read_data.load_data(path)){ //если данные для работы загружены, то работаем.
-        Functionals functionals(read_data); // храним значение итоговой штрафной функции и контролируем, чтобы
-        model.main_function(read_data, functionals/* +приращения к управл.параметрам */ /* класс с функционалами */);
+        FunctionalModel functionalModel(read_data); // храним значение итоговой штрафной функции и контролируем, чтобы
+        model.main_function(read_data, functionalModel/* +приращения к управл.параметрам */ /* класс с функционалами */);
         write_data.main_write(path,model);
     }
     end = std::chrono::system_clock::now();

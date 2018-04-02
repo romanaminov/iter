@@ -98,7 +98,7 @@ namespace  PlasmaLab {
         return 0;
     }
 
-    int Model::runge_kutta_4(Functionals &functionals){
+    int Model::runge_kutta_4(FunctionalModel &functionalModel){
         double time_step = 0;
         vec_d k1(system_size,0),
               k2(system_size,0),
@@ -129,8 +129,8 @@ namespace  PlasmaLab {
                 currents[j][i] = currents[j-1][i] + (k1[i] + 2.0 * k2[i] + 2.0 * k3[i] + k4[i]) / 6;
 
             if(breakdown_key != IsBreakdown::yes){
-                breakdown_key =  functionals.get_functionalsBeforeBreakdown().run(j - 1,currents,derivative_of_current,
-                                                                                         alfa_psi,alfa_r,alfa_z );//проверка на выполнение условий для пробой
+               ;// breakdown_key =  functionals.get_BeforeBD().run(j - 1,currents,derivative_of_current,
+                  //                                                                       alfa_psi,alfa_r,alfa_z );//проверка на выполнение условий для пробой
                 breakdown_time = j - 1;
                 breakdown_time *= integration_step;//вычисляем время пробоя
             }
@@ -217,12 +217,12 @@ namespace  PlasmaLab {
         matrix_multiplier(inverse_inductance_matrix, plasma_inductance_matrix, inverse_L_on_Mp_matrix,system_size,control_points_count);
     }
 
-    int Model::main_function(const ReadData& read_data, Functionals &functionals){
+    int Model::main_function(const ReadData& read_data, FunctionalModel &functionalModel){
 
 
         data_preparation(read_data);
 
-        runge_kutta_4(functionals);
+        runge_kutta_4(functionalModel);
 
         return 0;
     }    

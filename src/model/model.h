@@ -73,7 +73,7 @@ namespace PlasmaLab {
         inline int parser_alfa_xxx(const ReadData &);
         /*вычислить обратную матрицу индукнитвностей*/
         inline int slau_gauss(vec_d &, vec_d);
-        inline int runge_kutta_4(Functionals &);
+        inline int runge_kutta_4(FunctionalModel &);
         /*вычисление напряжения в катушке в момент времени*/
         inline double dependence_U_on_T(double, double, double, double, double);
         /*кусочно-линейная функция тока плазмы*/
@@ -84,7 +84,7 @@ namespace PlasmaLab {
          * \param[in,out] ReadData &model
          * \return 0, если все хорошо.
          */
-        int main_function(const ReadData &, Functionals &);
+        int main_function(const ReadData &, FunctionalModel &);
 
         /*!
          * \brief Возвращет посчитанные в каждый момент времени (дискретно) токи в контурах системы.
